@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- details section -->
+    <section id="car-details">
+        <h1>Truck Details</h1>
+        <div class="info-section">
+            <div class="car-header">
+                <!-- car image -->
+
+                <!-- type and model -->
+                <h1>{{ object.model }}</h1><img class="car-img" src="{{ object.image_url }}" alt='car image'/>
+                <!-- car year -->
+                <p><span class="description">Year: {{ object.year }}</span></p>
+
+                <p><span class="description">Truck Mass: {{ object.truck_mass }}tons</span></p>
+                <p><span class="description">Truck Height: {{ object.truck_height }}m</span></p>
+                <p><span class="description">Engine Power: {{ object.engine_power }}hp</span></p>
+                <p><span class="description">Price: {{ object.price|floatformat:3 }}lv</span></p>
+
+                {% if object.very_short_description %}
+                <p><span class="description">Description: {{ object.very_short_description }}</span></p>
+                {% endif %}
+
+            </div>
+            {% if owner != request.user %}
+            <div class="buttons">
+                <a href="{% url 'profile-details' pk=object.user.pk %}" class="edit-button">Want to buy?</a>
+            </div>
+            {% endif %}
+            <!-- Edit/Delete buttons -->
+            {% if owner == request.user %}
+                <div class="buttons">
+                    <a href="{% url 'truck-edit' pk=object.pk %}" class="edit-button">Edit</a>
+                    <a href="{% url 'truck-delete' pk=object.pk %}" class="delete-button">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+{% endblock %}
