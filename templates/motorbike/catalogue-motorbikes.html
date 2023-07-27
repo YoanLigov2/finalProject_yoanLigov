@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if not object_list %}
+        <!-- Display paragraph: If there are no cars yet-->
+        <p class="no-articles">No Motorbikes yet</p>
+    {% else %}
+        <!-- Display div "car" with information about every car (if any)-->
+
+        <section id="catalogue">
+            <h1>Total Motorbikes: {{ object_list.count }}</h1>
+            {% for bike in object_list %}
+                <!-- first car-->
+                <div class="car-card">
+                    <div class="image-wrap">
+                        <!-- car image -->
+                        <img src="{{ bike.image }}"
+                             alt="Sport Car">
+                    </div>
+                    <!-- car type -->
+                    <h3>{{ bike.bike_type }}</h3>
+                    <!-- car model -->
+                    <h1>{{ bike.model }}</h1>
+                    <div class="details-buttons">
+                        <!-- car details button -->
+                        <a href="{% url 'motorbike-details' pk=bike.pk %}" class="details-btn">Details</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </section>
+
+    {% endif %}
+{% endblock %}
