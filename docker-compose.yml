@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+
+  web:
+    image: ligov/ligovauto
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./envs/.env
+    volumes:
+      - /tmp/for_deploy/static:/app/static
+      - /tmp/for_deploy/media:/app/media
+    depends_on:
+      - postgres
+    command: gunicorn finalProject.wsgi:application --bind 0.0.0.0:8000
+  postgres:
+    image: postgres
+    env_file:
+      - ./envs/.env
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+
+  nginx:
+    image: nginx
+    ports:
+      - "81:80"
+      - "443:443"
+    volumes:
+      - /tmp/for_deploy/static:/home/app/web/staticfiles
+      - /tmp/for_deploy/media:/home/app/web/media
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+    links:
+      - web
