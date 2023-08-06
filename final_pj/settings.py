@@ -24,7 +24,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.getenv("DEBUG")))
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
 
 # Application definition
 
@@ -35,12 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'finalProject.common',
-    'finalProject.car',
-    'finalProject.user_profile',
-    'finalProject.motorbike',
-    'finalProject.yacht',
-    'finalProject.truck',
+    'final_pj.common',
+    'final_pj.car',
+    'final_pj.user_profile',
+    'final_pj.motorbike',
+    'final_pj.yacht',
+    'final_pj.truck',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'finalProject.urls'
+ROOT_URLCONF = 'final_pj.urls'
 
 TEMPLATES = [
     {
@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'finalProject.wsgi.application'
+WSGI_APPLICATION = 'final_pj.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

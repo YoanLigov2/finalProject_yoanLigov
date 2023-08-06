@@ -21,10 +21,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include('finalProject.common.urls')),
-    path("profile/", include('finalProject.user_profile.urls')),
-    path("car/", include('finalProject.car.urls')),
-    path("truck/", include('finalProject.truck.urls')),
-    path("yacht/", include('finalProject.yacht.urls')),
-    path("motorbike/", include('finalProject.motorbike.urls')),
+    path("", include('final_pj.common.urls')),
+    path("profile/", include('final_pj.user_profile.urls')),
+    path("car/", include('final_pj.car.urls')),
+    path("truck/", include('final_pj.truck.urls')),
+    path("yacht/", include('final_pj.yacht.urls')),
+    path("motorbike/", include('final_pj.motorbike.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
