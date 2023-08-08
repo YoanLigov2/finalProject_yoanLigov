@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <main>
+        <p class="no-articles">Choose your type of vehicle...</p>
+        <div class="option1-card">
+            <div class="car-card">
+                <div class="image-wrap">
+                    <!-- car image -->
+                    <img src="{% static 'images/carr-image.jpg' %}"
+                         alt="Sport Car">
+                </div>
+                <!-- car type -->
+                <h3>Car</h3>
+                <!-- car model -->
+                <div class="details-buttons">
+                    <!-- car details button -->
+                    <a href="{% url 'car-create' %}" class="details-btn">Add Car</a>
+                </div>
+            </div>
+            <div class="car-card">
+                <div class="image-wrap">
+                    <!-- car image -->
+                    <img src="{% static 'images/truck-image.jpg' %}"
+                         alt="Sport Car">
+                </div>
+                <!-- car type -->
+                <h3>Truck</h3>
+                <!-- car model -->
+                <div class="details-buttons">
+                    <!-- car details button -->
+                    <a href="{% url 'truck-create' %}" class="details-btn">Add Truck</a>
+                </div>
+            </div>
+            <div class="car-card">
+                <div class="image-wrap">
+                    <!-- car image -->
+                    <img src="{% static 'images/yacht-image.jpeg' %}"
+                         alt="Sport Car">
+                </div>
+                <!-- car type -->
+                <h3>Yacht</h3>
+                <!-- car model -->
+                <div class="details-buttons">
+                    <!-- car details button -->
+                    <a href="{% url 'yacht-create' %}" class="details-btn">Add Yacht</a>
+                </div>
+            </div>
+            <div class="car-card">
+                <div class="image-wrap">
+                    <!-- car image -->
+                    <img src="{% static 'images/motorbike-image.jpg' %}"
+                         alt="Sport Car">
+                </div>
+                <!-- car type -->
+                <h3>Motorbike</h3>
+                <!-- car model -->
+                <div class="details-buttons">
+                    <!-- car details button -->
+                    <a href="{% url 'motorbike-create' %}" class="details-btn">Add Motorbike</a>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
