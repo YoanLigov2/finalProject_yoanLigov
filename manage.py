@@ -13,7 +13,7 @@ def main():
     if DOT_ENV_PATH.exists():
         dotenv.read_dotenv(DOT_ENV_PATH)
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'final_pj.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'finalProject.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
